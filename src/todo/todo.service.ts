@@ -21,6 +21,9 @@ export class TodoService {
       where: {
         userId,
       },
+      orderBy: {
+        status: 'asc',
+      },
     });
   }
 
@@ -32,9 +35,9 @@ export class TodoService {
     });
   }
 
-  async update(id: number, status: boolean) {
+  async update(id: number, createTodoDto: CreateTodoDto) {
     const data = {
-      status,
+      status: createTodoDto.status,
     };
 
     return this.prisma.toDo.update({

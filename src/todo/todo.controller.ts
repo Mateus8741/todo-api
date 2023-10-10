@@ -34,9 +34,9 @@ export class TodoController {
     return this.todoService.findOne(+id);
   }
 
-  @Patch()
-  update(@Param('id') id: string, @Body() status: boolean) {
-    return this.todoService.update(+id, status);
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() createTodoDto: CreateTodoDto) {
+    return this.todoService.update(+id, createTodoDto);
   }
 
   @Delete()
