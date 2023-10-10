@@ -12,7 +12,6 @@ import {
 import { RequestWithUser } from 'src/auth/RequestWithUser';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { CreateTodoDto } from './dto/create-todo.dto';
-import { UpdateTodoDto } from './dto/update-todo.dto';
 import { TodoService } from './todo.service';
 
 @Controller('/todo')
@@ -36,8 +35,8 @@ export class TodoController {
   }
 
   @Patch()
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-    return this.todoService.update(+id, updateTodoDto);
+  update(@Param('id') id: string, @Body() status: boolean) {
+    return this.todoService.update(+id, status);
   }
 
   @Delete()

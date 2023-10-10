@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma/prisma.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
-import { UpdateTodoDto } from './dto/update-todo.dto';
 
 @Injectable()
 export class TodoService {
@@ -33,9 +32,9 @@ export class TodoService {
     });
   }
 
-  async update(id: number, updateTodoDto: UpdateTodoDto) {
+  async update(id: number, status: boolean) {
     const data = {
-      ...updateTodoDto,
+      status,
     };
 
     return this.prisma.toDo.update({
