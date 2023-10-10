@@ -11,7 +11,8 @@ export class TodoService {
     return this.prisma.toDo.create({
       data: {
         userId,
-        ...createTodoDto,
+        title: createTodoDto.title,
+        status: false,
       },
     });
   }
