@@ -49,4 +49,21 @@ export class AuthService {
       'Email address or password provided is incorrect.',
     );
   }
+
+  async refresh(user: User): Promise<UserToken> {
+    const payload: UserPayload = {
+      sub: user.id,
+      email: user.email,
+      name: user.name,
+    };
+
+    return {
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+      },
+      access_token: this.jwtService.sign(payload),
+    };
+  }
 }
