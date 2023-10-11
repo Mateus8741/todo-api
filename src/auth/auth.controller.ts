@@ -15,11 +15,4 @@ export class AuthController {
   async login(@common.Request() req: AuthRequest) {
     return this.authService.login(req.user);
   }
-
-  @IsPublic()
-  @common.Post('refresh')
-  @common.HttpCode(common.HttpStatus.OK)
-  async refresh(@common.Request() req: AuthRequest) {
-    return this.authService.refresh(req.user);
-  }
 }
